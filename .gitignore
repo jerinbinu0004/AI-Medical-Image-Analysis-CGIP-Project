@@ -205,3 +205,35 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# ======================
+# Node.js (VERY IMPORTANT)
+# ======================
+node_modules/
+npm-debug.log*
+yarn-error.log*
+package-lock.json
+
+# ======================
+# Project runtime folders
+# ======================
+uploads/
+outputs/
+
+# ======================
+# ML Model files (IMPORTANT)
+# ======================
+*.h5
+*.keras
+
+# ======================
+# VS Code (optional but clean)
+# ======================
+.vscode/
+*.code-workspace
+
+# ======================
+# OS junk files
+# ======================
+.DS_Store
+Thumbs.db
