@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medical AI Diagnosis System</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="background-gradient"></div>
+  
+  <div class="container">
+    <header class="hero">
+      <div class="logo-wrapper">
+        <div class="logo" aria-hidden="true">🩺</div>
+      </div>
+      <h1>Medical AI Diagnosis System</h1>
+      <p class="tagline">Multi-Disease Detection Using Deep Learning</p>
+      <p class="subtitle">Select a disease and upload medical image</p>
+    </header>
+
+    <main class="main-content">
+
+      <!-- Disease Selection -->
+      <div style="margin-bottom: 25px;">
+        <button type="button" class="btn disease-btn" onclick="selectDisease('pneumonia', this)">🫁 Pneumonia</button>
+        <button type="button" class="btn disease-btn" onclick="selectDisease('fracture', this)">🦴 Bone Fracture</button>
+        <button type="button" class="btn disease-btn" onclick="selectDisease('tuberculosis', this)">🩺 Tuberculosis</button>
+        <button type="button" class="btn disease-btn" onclick="selectDisease('malaria', this)">🦟 Malaria</button>
+        <button type="button" class="btn disease-btn" onclick="selectDisease('brain_tumor', this)">🧠 Brain Tumor</button>
+        <button type="button" class="btn disease-btn" onclick="selectDisease('glaucoma', this)">👁️ Glaucoma</button>
+        <button type="button" class="btn disease-btn disabled-btn" disabled>🧴 Skin Lesion <small style="font-size: 0.7em;">(Soon)</small></button>
+        <button type="button" class="btn disease-btn disabled-btn" disabled>🩸 Diabetic Retinopathy <small style="font-size: 0.7em;">(Soon)</small></button>
+
+      </div>
+
+      <section class="upload-section">
+        <form id="upload-form" class="upload-form">
+          
+          <!-- Hidden Disease Type -->
+          <input type="hidden" id="disease-type" name="disease_type">
+
+          <div class="file-input-wrapper">
+            <label for="image-input" class="file-label">
+              <i class="fas fa-cloud-upload-alt"></i>
+              <span class="label-text">Click to Upload or Drag & Drop</span>
+              <span class="file-info">PNG, JPG, or GIF (Max 10MB)</span>
+            </label>
+            <input type="file" id="image-input" accept="image/*" required />
+          </div>
+
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-magic"></i> Analyze Image
+          </button>
+        </form>
+      </section>
+
+      <div class="preview-section">
+        <img id="preview" class="preview-img hidden" alt="Selected image preview" />
+      </div>
+
+      <div id="spinner" class="spinner hidden">
+        <span class="spinner-text">Analyzing...</span>
+      </div>
+
+      <div id="result" class="result-card hidden">
+        <div class="result-header">
+          <i class="fas fa-check-circle result-icon"></i>
+          <h2>Analysis Complete</h2>
+        </div>
+        <div class="result-content">
+          <div class="result-item">
+            <label>Diagnosis:</label>
+            <p id="label" class="diagnosis-text"></p>
+          </div>
+          <div class="result-item">
+            <label>Confidence Score:</label>
+            <div class="confidence-bar">
+              <div id="confidence-fill" class="confidence-fill"></div>
+            </div>
+            <p id="confidence" class="confidence-text"></p>
+          </div>
+        </div>
+        <div class="result-footer">
+          <button type="button" class="btn btn-secondary" onclick="resetForm()">
+            <i class="fas fa-redo"></i> Analyze Another
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footnote">
+      <i class="fas fa-exclamation-triangle"></i>
+      Disclaimer: Results are for demonstration purposes only.
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

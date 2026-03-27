@@ -1,0 +1,302 @@
+/* ============================================== */
+/* PREMIUM AI MEDICAL UI - SAFE VERSION */
+/* ============================================== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --primary: #3b82f6;
+  --primary-dark: #1e3a8a;
+  --success: #22c55e;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --glass: rgba(255, 255, 255, 0.15);
+  --border: rgba(255, 255, 255, 0.25);
+}
+
+/* ================== BACKGROUND IMAGE ================== */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: url('image.png') no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+}
+
+/* Optional: dark overlay for readability */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.35); /* adjust opacity as needed */
+  z-index: 0;
+}
+
+/* ================== CONTAINER ================== */
+.container {
+  position: relative;
+  z-index: 1; /* keep above overlay */
+  backdrop-filter: blur(20px);
+  background: var(--glass);
+  border: 1px solid var(--border);
+  padding: 40px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 520px;
+  text-align: center;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+  animation: fadeUp 0.6s ease;
+}
+
+/* ================== HEADER ================== */
+.hero {
+  margin-bottom: 35px;
+}
+
+.logo-wrapper {
+  animation: float 4s ease-in-out infinite;
+}
+
+.logo {
+  font-size: 4rem;
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+h1 {
+  font-size: 2em;
+  font-weight: 700;
+  background: linear-gradient(90deg, #fff, #cbd5ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.tagline {
+  color: #e0e7ff;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.subtitle {
+  color: #dbeafe;
+  font-size: 0.9em;
+  margin-top: 5px;
+}
+
+/* ================== UPLOAD ================== */
+.upload-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.file-label {
+  width: 100%;
+  max-width: 450px;
+  height: 180px;
+  margin: 0 auto;
+  border-radius: 15px;
+  border: 2px dashed white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.3s;
+  color: white;
+}
+
+.file-label:hover {
+  background: rgba(255,255,255,0.1);
+  transform: translateY(-3px);
+}
+
+.file-label i {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+/* ================== BUTTONS ================== */
+.btn {
+  padding: 12px 25px;
+  border-radius: 12px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #3b82f6, #1e3a8a);
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+.btn-secondary {
+  background: white;
+  color: #1e3a8a;
+}
+
+.btn-secondary:hover {
+  background: #1e3a8a;
+  color: white;
+}
+
+/* Disease selection buttons */
+.disease-btn {
+  background: white;
+  color: #1e3a8a;
+  border: 2px solid #3b82f6;
+  margin: 5px;
+}
+
+.disease-btn.active {
+  background: linear-gradient(135deg, #3b82f6, #1e3a8a);
+  color: white;
+}
+
+.disease-btn:disabled,
+.disabled-btn {
+  background: white;
+  color: #1e3a8a;
+  border: 2px dashed #cccccc;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.disease-btn:disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
+/* ================== PREVIEW ================== */
+.preview-img {
+  max-width: 100%;
+  border-radius: 15px;
+  margin-top: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ================== SPINNER ================== */
+.spinner {
+  text-align: center;
+  margin: 25px 0;
+}
+
+.spinner::after {
+  content: "";
+  width: 50px;
+  height: 50px;
+  display: block;
+  margin: 10px auto;
+  border: 4px solid rgba(255,255,255,0.3);
+  border-top: 4px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ================== RESULT CARD ================== */
+.result-card {
+  background: rgba(255,255,255,0.95);
+  border-radius: 15px;
+  margin-top: 25px;
+  overflow: hidden;
+  animation: fadeUp 0.5s ease;
+}
+
+.result-header {
+  background: linear-gradient(135deg, #3b82f6, #1e3a8a);
+  color: white;
+  padding: 20px;
+}
+
+.result-content {
+  padding: 25px;
+}
+
+.diagnosis-text {
+  font-size: 1.6em;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* Disease-specific styles */
+.diagnosis-text.normal {
+  background: linear-gradient(135deg, #22c55e, #15803d);
+  color: white;
+}
+
+.diagnosis-text.pneumonia,
+.diagnosis-text.tuberculosis,
+.diagnosis-text.fracture,
+.diagnosis-text.malaria,
+.diagnosis-text.brain-tumor,
+.diagnosis-text.glaucoma
+ {
+  background: linear-gradient(135deg, #ef4444, #b91c1c);
+  color: white;
+}
+
+/* Confidence */
+.confidence-bar {
+  width: 100%;
+  height: 20px;
+  background: #e5e7eb;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.confidence-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #1e3a8a);
+  transition: width 0.6s ease;
+}
+
+.confidence-text {
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+/* Footer */
+.footnote {
+  margin-top: 25px;
+  font-size: 0.8em;
+  color: #e0e7ff;
+}
+
+/* Utility */
+.hidden {
+  display: none !important;
+}
